@@ -5,6 +5,9 @@ import QuizStart from './components/QuizStart';
 import QuizQuestion from './components/QuizQuestion';
 import Leaderboard from './components/Leaderboard';
 import Summary from './components/Summary';
+import Login from './components/Login';
+import SignUp from './components/SignUp';
+import Home from './components/Home';
 
 const dummyQuestions = [
   {
@@ -35,9 +38,26 @@ const sampleLeaderboard = [
   { name: 'Charlie', score: 80 },
 ];
 
+const sampleQuizzes = [
+  { title: 'Geography Quiz' },
+  { title: 'Science Quiz' },
+  { title: 'Literature Quiz' },
+];
+
 const App = () => {
-  const [page, setPage] = useState('start');
+  const [page, setPage] = useState('login');
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
+  const [username, setUsername] = useState('');
+
+  const login = (username) => {
+    setUsername(username);
+    setPage('home');
+  };
+
+  const signUp = (username) => {
+    setUsername(username);
+    setPage('home');
+  };
 
   const startQuiz = () => {
     setPage('quiz');
@@ -60,9 +80,21 @@ const App = () => {
     setPage('start');
   };
 
+  const logout = () => {
+    setUsername('');
+    setPage('login');
+  };
+
+  const selectQuiz = (quiz) => {
+    console.log(`Selected quiz: ${quiz.title}`);
+    startQuiz();
+  };
+
   return (
     <div>
-      {page === 'start' && <QuizStart onStart={startQuiz} />}
+      {page === 'login' && <Login onLogin={login} />}
+      {page === 'signup' && <SignUp onSignUp={signUp} />}
+      {page === 'home' && <Home username={username} quizzes={sampleQuizzes} onQuizSelect={selectQuiz} onLogout={logout} />}
       {page === 'quiz' && (
         <QuizQuestion
           question={dummyQuestions[currentQuestionIndex].question}

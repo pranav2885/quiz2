@@ -56,9 +56,11 @@ const QuizQuestion = ({ question, options, onNext }) => {
             </Box>
           ))}
         </RadioGroup>
+        <center>
         <Button variant="contained" color="secondary" onClick={() => onNext(selectedOption)}>
           Next
         </Button>
+        </center>
       </Box>
     </Box>
   );
