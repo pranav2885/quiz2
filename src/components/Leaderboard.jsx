@@ -20,7 +20,7 @@ const Leaderboard = ({ data, onRestart }) => {
           backgroundColor: '#1A1A2E', // Dark background for the container
           padding: 4,
           borderRadius: 2,
-          textAlign: 'center', //make the text to come center
+          textAlign: 'center', 
           width: '400px', // Fixed width
         }}
       >
