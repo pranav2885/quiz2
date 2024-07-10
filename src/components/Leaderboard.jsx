@@ -10,25 +10,28 @@ const Leaderboard = ({ data, onRestart }) => {
         alignItems: 'center',
         justifyContent: 'center',
         height: '100vh',
-        backgroundColor: '#f0f0f0',
+        background: 'linear-gradient(to top, #00008B, #87CEEB)',
+        color: '#fff',
       }}
     >
       <Box
         sx={{
-          backgroundColor: '#1A1A2E',
+          backgroundColor: 'rgba(255, 255, 255, 0.2)',
           padding: 4,
           borderRadius: 2,
           textAlign: 'center',
-          width: '400px',
+          width: '100%',
+          maxWidth: '400px',
+          boxShadow: '0 4px 8px rgba(0, 0, 0, 0.3)',
         }}
       >
-        <Typography variant="h4" sx={{ color: 'white', marginBottom: 4 }}>
+        <Typography variant="h4" sx={{ marginBottom: 4 }}>
           Leaderboard
         </Typography>
         <List>
           {data.map((entry, index) => (
             <ListItem key={index}>
-              <ListItemText primary={`${entry.name}: ${entry.score}`} />
+              <ListItemText primary={`${entry.name}: ${entry.score}`} sx={{ color: '#fff' }} />
             </ListItem>
           ))}
         </List>

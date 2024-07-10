@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
-import { Box, Typography, Button, Link, AppBar, Toolbar, Container, Grid, Card, CardContent, IconButton } from '@mui/material';
+import {
+  Box, Typography, Button, Link, AppBar, Toolbar, Container, Grid, Card, CardContent,
+} from '@mui/material';
 import { useSpring, animated } from '@react-spring/web';
 import DateRangeIcon from '@mui/icons-material/DateRange';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import ScoreIcon from '@mui/icons-material/Score';
+import "../styles/cardsContainer.css";
 
 const Home = ({ username, onQuizSelect, onShowLeaderboard }) => {
   const [hoveredIndex, setHoveredIndex] = useState(-1);
@@ -33,12 +36,13 @@ const Home = ({ username, onQuizSelect, onShowLeaderboard }) => {
   return (
     <Box
       sx={{
+        maxWidth: '100%',
         fontFamily: 'Roboto, sans-serif',
         minHeight: '100vh',
         display: 'flex',
         flexDirection: 'column',
-        alignItems: 'center',
-        justifyContent: 'center',
+        alignItems: 'left',
+        justifyContent: 'left',
         position: 'relative',
         overflow: 'hidden',
         background: 'linear-gradient(to top, #00008B, #87CEEB)',
@@ -78,52 +82,23 @@ const Home = ({ username, onQuizSelect, onShowLeaderboard }) => {
           flex: 1,
           display: 'flex',
           flexDirection: 'column',
-          justifyContent: 'center',
-          alignItems: 'center',
-          padding: { xs: 2, sm: 4 },
+          justifyContent: 'left',
+          alignItems: 'left',
+          padding: { xs: 2, sm: 4 }, // Adjust padding here
           overflow: 'hidden',
-          margin: { xs: '10px', sm: '20px' },
-          maxWidth: '100%', // Ensure the container is not too wide on large screens
+          margin: { xs: '10px', sm: '20px' }, // Adjust margin here
+          maxWidth: '100%',
         }}
       >
         <animated.div style={springProps}>
           <Typography variant="h4" sx={{ marginBottom: { xs: 2, sm: 4 }, textAlign: 'center' }}>
             Hi, {username}!
           </Typography>
-          <Box
-            sx={{
-              width: '100%',
-              maxWidth: '100vw',
-              backgroundColor: 'rgba(255, 255, 255, 0.1)',
-              backdropFilter: 'blur(10px)',
-              padding: { xs: 2, sm: 4 },
-              borderRadius: 4,
-              boxShadow: '0 4px 8px rgba(0, 0, 0, 0.3)',
-              // marginBottom: { xs: 2, sm: 4 },
-              overflowX: 'auto',
-              whiteSpace: 'nowrap',
-              '&::before': {
-                content: '""',
-                position: 'absolute',
-                top: 0,
-                left: 0,
-                width: '100%',
-                height: '100%',
-                background: 'linear-gradient(45deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05))',
-                zIndex: -1,
-                borderRadius: 4,
-              
-              },
-              '&::-webkit-scrollbar': {
-                display: 'none',
-              },
-              scrollbarWidth: 'none',
-            }}
-          >
+          <Box className="cardContainer">
             <Typography variant="h5" sx={{ marginBottom: 2, textAlign: 'center' }}>
               Live Quizzes
             </Typography>
-            <Grid container spacing={2} sx={{ paddingBottom: 2 }}>
+            <Grid container spacing={2}>
               {dummyQuizzes.map((quiz, index) => (
                 <Grid item xs={12} sm={6} md={4} lg={3} key={index}>
                   <Card
@@ -139,7 +114,6 @@ const Home = ({ username, onQuizSelect, onShowLeaderboard }) => {
                       transform: hoveredIndex === index ? 'scale(1.05)' : 'scale(1)',
                       transition: 'transform 0.3s, background-color 0.3s',
                       padding: 2,
-                      marginBottom: 2,
                       boxShadow: '0 4px 8px rgba(0, 0, 0, 0.3)',
                       borderRadius: 4,
                     }}
@@ -148,19 +122,19 @@ const Home = ({ username, onQuizSelect, onShowLeaderboard }) => {
                       <Typography variant="h6" sx={{ color: '#fff' }}>{quiz.title}</Typography>
                       <Box sx={{ display: 'flex', alignItems: 'center', marginTop: 1 }}>
                         <AccessTimeIcon sx={{ color: 'rgba(255, 255, 255, 0.7)', marginRight: 1 }} />
-                        <Typography variant="body2" color="textSecondary">
+                        <Typography variant="body2" sx={{ color: 'rgba(255, 255, 255, 0.7)' }}>
                           {quiz.duration}
                         </Typography>
                       </Box>
                       <Box sx={{ display: 'flex', alignItems: 'center', marginTop: 1 }}>
                         <DateRangeIcon sx={{ color: 'rgba(255, 255, 255, 0.7)', marginRight: 1 }} />
-                        <Typography variant="body2" color="textSecondary">
+                        <Typography variant="body2" sx={{ color: 'rgba(255, 255, 255, 0.7)' }}>
                           {quiz.startDate} - {quiz.endDate}
                         </Typography>
                       </Box>
                       <Box sx={{ display: 'flex', alignItems: 'center', marginTop: 1 }}>
                         <ScoreIcon sx={{ color: 'rgba(255, 255, 255, 0.7)', marginRight: 1 }} />
-                        <Typography variant="body2" color="textSecondary">
+                        <Typography variant="body2" sx={{ color: 'rgba(255, 255, 255, 0.7)' }}>
                           {quiz.totalPoints} points
                         </Typography>
                       </Box>

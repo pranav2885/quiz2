@@ -17,19 +17,23 @@ const QuizQuestion = ({ question, options, onNext }) => {
         alignItems: 'center',
         justifyContent: 'center',
         height: '100vh',
-        backgroundColor: '#f0f0f0',
+        background: 'linear-gradient(to top, #00008B, #87CEEB)',
+        color: '#fff',
       }}
     >
       <Box
         sx={{
-          backgroundColor: '#1A1A2E',
+          backgroundColor: 'rgba(255, 255, 255, 0.2)',
           padding: 4,
           borderRadius: 2,
           textAlign: 'center',
-          width: '400px',
+          height: '340px',
+          width: '100%',
+          maxWidth: '500px',
+          boxShadow: '0 4px 8px rgba(0, 0, 0, 0.3)',
         }}
       >
-        <Typography variant="h5" sx={{ color: 'white', marginBottom: 4 }}>
+        <Typography variant="h5" sx={{ marginBottom: 4 }} textAlign={'left'}>
           {question}
         </Typography>
         <RadioGroup
@@ -37,12 +41,16 @@ const QuizQuestion = ({ question, options, onNext }) => {
           onChange={(e) => setSelectedOption(e.target.value)}
         >
           {options.map((option, index) => (
-            <FormControlLabel key={index} value={option} control={<Radio />} label={option} />
+            <FormControlLabel key={index} value={option} control={<Radio sx={{ color: '#fff' }} />} label={option} />
           ))}
         </RadioGroup>
         <Button variant="contained" color="primary" onClick={handleNext} sx={{ marginTop: 4 }}>
           Next
         </Button>
+        <Button variant="contained" color="primary" onClick={handleNext} sx={{ marginTop: 4 }}>
+          Next
+        </Button>
+        
       </Box>
     </Box>
   );

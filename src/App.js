@@ -19,7 +19,7 @@ const dummyQuestions = [
     options: ['Mars', 'Earth', 'Jupiter', 'Saturn'],
   },
   {
-    question: "What is the largest ocean on Earth?",
+    question: "What is the largest ocean onEarth?",
     options: ['Pacific Ocean', 'Atlantic Ocean', 'Indian Ocean', 'Arctic Ocean'],
   },
   {
