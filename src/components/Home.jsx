@@ -83,7 +83,7 @@ const Home = ({ username, onQuizSelect, onShowLeaderboard }) => {
           padding: { xs: 2, sm: 4 },
           overflow: 'hidden',
           margin: { xs: '10px', sm: '20px' },
-          maxWidth: '90%', // Ensure the container is not too wide on large screens
+          maxWidth: '100%', // Ensure the container is not too wide on large screens
         }}
       >
         <animated.div style={springProps}>
@@ -93,12 +93,13 @@ const Home = ({ username, onQuizSelect, onShowLeaderboard }) => {
           <Box
             sx={{
               width: '100%',
+              maxWidth: '100vw',
               backgroundColor: 'rgba(255, 255, 255, 0.1)',
               backdropFilter: 'blur(10px)',
               padding: { xs: 2, sm: 4 },
               borderRadius: 4,
               boxShadow: '0 4px 8px rgba(0, 0, 0, 0.3)',
-              marginBottom: { xs: 2, sm: 4 },
+              // marginBottom: { xs: 2, sm: 4 },
               overflowX: 'auto',
               whiteSpace: 'nowrap',
               '&::before': {
@@ -111,6 +112,7 @@ const Home = ({ username, onQuizSelect, onShowLeaderboard }) => {
                 background: 'linear-gradient(45deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05))',
                 zIndex: -1,
                 borderRadius: 4,
+              
               },
               '&::-webkit-scrollbar': {
                 display: 'none',
