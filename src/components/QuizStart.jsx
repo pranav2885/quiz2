@@ -1,9 +1,7 @@
-// src/components/QuizStart.js
-
 import React from 'react';
-import { Box, Button, Typography, TextField } from '@mui/material';
+import { Box, Button, Typography } from '@mui/material';
 
-const QuizStart = ({ onStart }) => {
+const QuizStart = ({ onStartQuiz }) => {
   return (
     <Box
       sx={{
@@ -12,54 +10,23 @@ const QuizStart = ({ onStart }) => {
         alignItems: 'center',
         justifyContent: 'center',
         height: '100vh',
-        backgroundColor: '#87CEEB', // Light blue background
+        backgroundColor: '#f0f0f0',
       }}
     >
       <Box
         sx={{
-          backgroundColor: '#1A1A2E', // Dark background for the container
+          backgroundColor: '#1A1A2E',
           padding: 4,
           borderRadius: 2,
           textAlign: 'center',
-          width: '400px', // Fixed width
+          width: '400px',
         }}
       >
-        <Typography variant="h4" sx={{ color: 'white', marginBottom: 2 }}>
-          Start the Quiz
+        <Typography variant="h4" sx={{ color: 'white', marginBottom: 4 }}>
+          Ready to Start the Quiz?
         </Typography>
-        <Typography sx={{ color: 'white', marginBottom: 2 }}>
-          Good luck!
-        </Typography>
-        {/* <Typography sx={{ color: 'white', marginBottom: 2 }}>
-          Time: 60 sec
-        </Typography>
-        <Box sx={{ display: 'flex', justifyContent: 'center', marginBottom: 2 }}>
-          <TextField
-            variant="outlined"
-            value="1"
-            InputProps={{ readOnly: true }}
-            sx={{
-              width: 50,
-              marginRight: 1,
-              '& .MuiOutlinedInput-input': { color: 'white' },
-              '& .MuiOutlinedInput-notchedOutline': { borderColor: 'white' },
-            }}
-          />
-          <Typography sx={{ color: 'white', marginRight: 1 }}>min</Typography>
-          <TextField
-            variant="outlined"
-            value="0"
-            InputProps={{ readOnly: true }}
-            sx={{
-              width: 50,
-              '& .MuiOutlinedInput-input': { color: 'white' },
-              '& .MuiOutlinedInput-notchedOutline': { borderColor: 'white' },
-            }}
-          />
-          <Typography sx={{ color: 'white' }}>sec</Typography>
-        </Box> */}
-        <Button variant="contained" color="secondary" onClick={onStart}>
-          Start
+        <Button variant="contained" color="secondary" onClick={onStartQuiz}>
+          Start Quiz
         </Button>
       </Box>
     </Box>

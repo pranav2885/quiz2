@@ -1,12 +1,8 @@
-// src/App.js
-
 import React, { useState } from 'react';
 import QuizStart from './components/QuizStart';
 import QuizQuestion from './components/QuizQuestion';
 import Leaderboard from './components/Leaderboard';
 import Summary from './components/Summary';
-import Login from './components/Login';
-import SignUp from './components/SignUp';
 import Home from './components/Home';
 
 const dummyQuestions = [
@@ -45,21 +41,16 @@ const sampleQuizzes = [
 ];
 
 const App = () => {
-  const [page, setPage] = useState('login');
+  const [page, setPage] = useState('home');
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
-  const [username, setUsername] = useState('');
-
-  const login = (username) => {
-    setUsername(username);
-    setPage('home');
-  };
-
-  const signUp = (username) => {
-    setUsername(username);
-    setPage('home');
-  };
+  const [username, setUsername] = useState('User');
 
   const startQuiz = () => {
+    setPage('quizStart');
+  };
+
+  const beginQuiz = () => {
+    setCurrentQuestionIndex(0);
     setPage('quiz');
   };
 
@@ -67,7 +58,7 @@ const App = () => {
     if (currentQuestionIndex < dummyQuestions.length - 1) {
       setCurrentQuestionIndex(currentQuestionIndex + 1);
     } else {
-      setPage('summary');
+      setPage('leaderboard');
     }
   };
 
@@ -77,12 +68,12 @@ const App = () => {
 
   const restartQuiz = () => {
     setCurrentQuestionIndex(0);
-    setPage('start');
+    setPage('home');
   };
 
   const logout = () => {
     setUsername('');
-    setPage('login');
+    setPage('home');
   };
 
   const selectQuiz = (quiz) => {
@@ -92,9 +83,19 @@ const App = () => {
 
   return (
     <div>
-      {page === 'login' && <Login onLogin={login} />}
-      {page === 'signup' && <SignUp onSignUp={signUp} />}
-      {page === 'home' && <Home username={username} quizzes={sampleQuizzes} onQuizSelect={selectQuiz} onLogout={logout} />}
+      {page === 'home' && (
+        <Home 
+          username={username} 
+          quizzes={sampleQuizzes} 
+          onQuizSelect={selectQuiz} 
+          onLogout={logout} 
+        />
+      )}
+      {page === 'quizStart' && (
+        <QuizStart 
+          onStartQuiz={beginQuiz} 
+        />
+      )}
       {page === 'quiz' && (
         <QuizQuestion
           question={dummyQuestions[currentQuestionIndex].question}
@@ -102,8 +103,17 @@ const App = () => {
           onNext={nextQuestion}
         />
       )}
-      {page === 'leaderboard' && <Leaderboard data={sampleLeaderboard} onRestart={restartQuiz} />}
-      {page === 'summary' && <Summary onRestart={restartQuiz} />}
+      {page === 'leaderboard' && (
+        <Leaderboard 
+          data={sampleLeaderboard} 
+          onRestart={restartQuiz} 
+        />
+      )}
+      {page === 'summary' && (
+        <Summary 
+          onRestart={restartQuiz} 
+        />
+      )}
     </div>
   );
 };

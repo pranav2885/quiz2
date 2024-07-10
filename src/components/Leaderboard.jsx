@@ -1,7 +1,5 @@
-// src/components/Leaderboard.js
-
 import React from 'react';
-import { Box, Button, Typography } from '@mui/material';
+import { Box, Button, Typography, List, ListItem, ListItemText } from '@mui/material';
 
 const Leaderboard = ({ data, onRestart }) => {
   return (
@@ -12,27 +10,29 @@ const Leaderboard = ({ data, onRestart }) => {
         alignItems: 'center',
         justifyContent: 'center',
         height: '100vh',
-        backgroundColor: '#87CEEB', // Light blue background
+        backgroundColor: '#f0f0f0',
       }}
     >
       <Box
         sx={{
-          backgroundColor: '#1A1A2E', // Dark background for the container
+          backgroundColor: '#1A1A2E',
           padding: 4,
           borderRadius: 2,
-          textAlign: 'center', 
-          width: '400px', // Fixed width
+          textAlign: 'center',
+          width: '400px',
         }}
       >
-        <Typography variant="h4" sx={{ color: 'white', marginBottom: 2 }}>
+        <Typography variant="h4" sx={{ color: 'white', marginBottom: 4 }}>
           Leaderboard
         </Typography>
-        {data.map((item, index) => (
-          <Typography key={index} sx={{ color: 'white', marginBottom: 1 }}>
-            {item.name}: {item.score}
-          </Typography>
-        ))}
-        <Button variant="contained" color="secondary" onClick={onRestart}>
+        <List>
+          {data.map((entry, index) => (
+            <ListItem key={index}>
+              <ListItemText primary={`${entry.name}: ${entry.score}`} />
+            </ListItem>
+          ))}
+        </List>
+        <Button variant="contained" color="primary" onClick={onRestart} sx={{ marginTop: 4 }}>
           Restart Quiz
         </Button>
       </Box>
