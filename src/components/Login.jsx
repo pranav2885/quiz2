@@ -21,7 +21,7 @@ const Login = ({ onLogin, onSignUpClick, onForgotPasswordClick }) => {
         alignItems: 'center',
         justifyContent: 'center',
         height: '100vh',
-        backgroundColor: '#f0f0f0',
+        backgroundColor: '#ADD8E6', // Light blue background color
       }}
     >
       <Box
@@ -45,7 +45,7 @@ const Login = ({ onLogin, onSignUpClick, onForgotPasswordClick }) => {
           onChange={(e) => setEmail(e.target.value)}
           sx={{
             marginBottom: 2,
-            backgroundColor: '#f0f0f0', // Same as container background color
+            backgroundColor: '#ADD8E6', // Light blue background color
             borderRadius: '4px', // Border radius for rounded corners
           }}
           InputProps={{
@@ -63,7 +63,7 @@ const Login = ({ onLogin, onSignUpClick, onForgotPasswordClick }) => {
           onChange={(e) => setPassword(e.target.value)}
           sx={{
             marginBottom: 2,
-            backgroundColor: '#f0f0f0', // Same as container background color
+            backgroundColor: '#ADD8E6', // Light blue background color
             borderRadius: '4px', // Border radius for rounded corners
           }}
           InputProps={{
