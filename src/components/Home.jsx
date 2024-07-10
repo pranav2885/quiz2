@@ -34,10 +34,11 @@ const Home = ({ username, onQuizSelect, onShowLeaderboard }) => {
         minHeight: '100vh',
         display: 'flex',
         flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
         position: 'relative',
         overflow: 'hidden',
-        backgroundImage: 'url(https://www.example.com/space-background.jpg)',
-        backgroundSize: 'cover',
+        background: 'linear-gradient(to top, #00008B, #87CEEB)',
         color: '#fff',
         '&::before': {
           content: '""',
@@ -77,7 +78,9 @@ const Home = ({ username, onQuizSelect, onShowLeaderboard }) => {
           justifyContent: 'center',
           alignItems: 'center',
           padding: { xs: 2, sm: 4 },
-          overflow: 'hidden', // Hide scrollbar
+          overflow: 'hidden',
+          margin: { xs: '10px', sm: '20px' },
+          maxWidth: '90%', // Ensure the container is not too wide on large screens
         }}
       >
         <animated.div style={springProps}>
@@ -91,7 +94,7 @@ const Home = ({ username, onQuizSelect, onShowLeaderboard }) => {
               backgroundColor: 'rgba(255, 255, 255, 0.1)',
               backdropFilter: 'blur(10px)',
               padding: { xs: 2, sm: 4 },
-              borderRadius: 2,
+              borderRadius: 4,
               boxShadow: '0 4px 8px rgba(0, 0, 0, 0.3)',
               marginBottom: { xs: 2, sm: 4 },
               overflowX: 'auto',
@@ -105,17 +108,18 @@ const Home = ({ username, onQuizSelect, onShowLeaderboard }) => {
                 height: '100%',
                 background: 'linear-gradient(45deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05))',
                 zIndex: -1,
-                borderRadius: 2,
+                borderRadius: 4,
               },
               '&::-webkit-scrollbar': {
-                display: 'none', // Hide scrollbar
+                display: 'none',
               },
+              scrollbarWidth: 'none',
             }}
           >
             <Typography variant="h5" sx={{ marginBottom: 2 }}>
               Live Quizzes
             </Typography>
-            <Box sx={{ display: 'flex', gap: 2, overflowX: 'auto', paddingBottom: 2 }}>
+            <Box sx={{ display: 'flex', gap: 2, overflowX: 'auto', paddingBottom: 2, '&::-webkit-scrollbar': { display: 'none' }, scrollbarWidth: 'none' }}>
               {dummyQuizzes.map((quiz, index) => (
                 <Card
                   key={index}
@@ -130,10 +134,11 @@ const Home = ({ username, onQuizSelect, onShowLeaderboard }) => {
                     },
                     transform: hoveredIndex === index ? 'scale(1.05)' : 'scale(1)',
                     transition: 'transform 0.3s, background-color 0.3s',
-                    minWidth: { xs: 250, sm: 300 }, // Adjusted minWidth for smaller screens
+                    minWidth: { xs: 250, sm: 300 },
                     padding: 2,
                     marginBottom: 2,
                     boxShadow: '0 4px 8px rgba(0, 0, 0, 0.3)',
+                    borderRadius: 4,
                   }}
                 >
                   <CardContent>
