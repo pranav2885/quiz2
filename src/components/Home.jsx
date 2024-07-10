@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
-import { Box, Typography, Button, Link, Card, CardContent, AppBar, Toolbar, Container } from '@mui/material';
+import { Box, Typography, Button, Link, AppBar, Toolbar, Container, Grid, Card, CardContent, IconButton } from '@mui/material';
 import { useSpring, animated } from '@react-spring/web';
+import DateRangeIcon from '@mui/icons-material/DateRange';
+import AccessTimeIcon from '@mui/icons-material/AccessTime';
+import ScoreIcon from '@mui/icons-material/Score';
 
 const Home = ({ username, onQuizSelect, onShowLeaderboard }) => {
   const [hoveredIndex, setHoveredIndex] = useState(-1);
@@ -90,7 +93,6 @@ const Home = ({ username, onQuizSelect, onShowLeaderboard }) => {
           <Box
             sx={{
               width: '100%',
-              maxWidth: 1200,
               backgroundColor: 'rgba(255, 255, 255, 0.1)',
               backdropFilter: 'blur(10px)',
               padding: { xs: 2, sm: 4 },
@@ -116,49 +118,55 @@ const Home = ({ username, onQuizSelect, onShowLeaderboard }) => {
               scrollbarWidth: 'none',
             }}
           >
-            <Typography variant="h5" sx={{ marginBottom: 2 }}>
+            <Typography variant="h5" sx={{ marginBottom: 2, textAlign: 'center' }}>
               Live Quizzes
             </Typography>
-            <Box sx={{ display: 'flex', gap: 2, overflowX: 'auto', paddingBottom: 2, '&::-webkit-scrollbar': { display: 'none' }, scrollbarWidth: 'none' }}>
+            <Grid container spacing={2} sx={{ paddingBottom: 2 }}>
               {dummyQuizzes.map((quiz, index) => (
-                <Card
-                  key={index}
-                  onClick={() => onQuizSelect(quiz)}
-                  onMouseEnter={() => handleMouseEnter(index)}
-                  onMouseLeave={handleMouseLeave}
-                  sx={{
-                    cursor: 'pointer',
-                    backgroundColor: 'rgba(255, 255, 255, 0.2)',
-                    '&:hover': {
-                      backgroundColor: 'rgba(255, 255, 255, 0.3)',
-                    },
-                    transform: hoveredIndex === index ? 'scale(1.05)' : 'scale(1)',
-                    transition: 'transform 0.3s, background-color 0.3s',
-                    minWidth: { xs: 250, sm: 300 },
-                    padding: 2,
-                    marginBottom: 2,
-                    boxShadow: '0 4px 8px rgba(0, 0, 0, 0.3)',
-                    borderRadius: 4,
-                  }}
-                >
-                  <CardContent>
-                    <Typography variant="h6" sx={{ color: '#fff' }}>{quiz.title}</Typography>
-                    <Typography variant="body2" color="textSecondary">
-                      Duration: {quiz.duration}
-                    </Typography>
-                    <Typography variant="body2" color="textSecondary">
-                      Start Date: {quiz.startDate}
-                    </Typography>
-                    <Typography variant="body2" color="textSecondary">
-                      End Date: {quiz.endDate}
-                    </Typography>
-                    <Typography variant="body2" color="textSecondary">
-                      Total Points: {quiz.totalPoints}
-                    </Typography>
-                  </CardContent>
-                </Card>
+                <Grid item xs={12} sm={6} md={4} lg={3} key={index}>
+                  <Card
+                    onClick={() => onQuizSelect(quiz)}
+                    onMouseEnter={() => handleMouseEnter(index)}
+                    onMouseLeave={handleMouseLeave}
+                    sx={{
+                      cursor: 'pointer',
+                      backgroundColor: 'rgba(255, 255, 255, 0.2)',
+                      '&:hover': {
+                        backgroundColor: 'rgba(255, 255, 255, 0.3)',
+                      },
+                      transform: hoveredIndex === index ? 'scale(1.05)' : 'scale(1)',
+                      transition: 'transform 0.3s, background-color 0.3s',
+                      padding: 2,
+                      marginBottom: 2,
+                      boxShadow: '0 4px 8px rgba(0, 0, 0, 0.3)',
+                      borderRadius: 4,
+                    }}
+                  >
+                    <CardContent>
+                      <Typography variant="h6" sx={{ color: '#fff' }}>{quiz.title}</Typography>
+                      <Box sx={{ display: 'flex', alignItems: 'center', marginTop: 1 }}>
+                        <AccessTimeIcon sx={{ color: 'rgba(255, 255, 255, 0.7)', marginRight: 1 }} />
+                        <Typography variant="body2" color="textSecondary">
+                          {quiz.duration}
+                        </Typography>
+                      </Box>
+                      <Box sx={{ display: 'flex', alignItems: 'center', marginTop: 1 }}>
+                        <DateRangeIcon sx={{ color: 'rgba(255, 255, 255, 0.7)', marginRight: 1 }} />
+                        <Typography variant="body2" color="textSecondary">
+                          {quiz.startDate} - {quiz.endDate}
+                        </Typography>
+                      </Box>
+                      <Box sx={{ display: 'flex', alignItems: 'center', marginTop: 1 }}>
+                        <ScoreIcon sx={{ color: 'rgba(255, 255, 255, 0.7)', marginRight: 1 }} />
+                        <Typography variant="body2" color="textSecondary">
+                          {quiz.totalPoints} points
+                        </Typography>
+                      </Box>
+                    </CardContent>
+                  </Card>
+                </Grid>
               ))}
-            </Box>
+            </Grid>
           </Box>
         </animated.div>
       </Container>
