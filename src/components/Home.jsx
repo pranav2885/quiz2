@@ -36,13 +36,12 @@ const Home = ({ username, onQuizSelect, onShowLeaderboard }) => {
   return (
     <Box
       sx={{
-        maxWidth: '100%',
-        fontFamily: 'Roboto, sans-serif',
+        width: '100%',
         minHeight: '100vh',
         display: 'flex',
         flexDirection: 'column',
-        alignItems: 'left',
-        justifyContent: 'left',
+        alignItems: 'center',
+        justifyContent: 'center',
         position: 'relative',
         overflow: 'hidden',
         background: 'linear-gradient(to top, #00008B, #87CEEB)',
@@ -82,19 +81,18 @@ const Home = ({ username, onQuizSelect, onShowLeaderboard }) => {
           flex: 1,
           display: 'flex',
           flexDirection: 'column',
-          justifyContent: 'left',
-          alignItems: 'left',
-          padding: { xs: 2, sm: 4 }, // Adjust padding here
+          justifyContent: 'center',
+          alignItems: 'center',
+          padding: { xs: 2, sm: 4 },
           overflow: 'hidden',
-          margin: { xs: '10px', sm: '20px' }, // Adjust margin here
-          maxWidth: '100%',
+          margin: { xs: '10px', sm: '20px' },
         }}
       >
         <animated.div style={springProps}>
           <Typography variant="h4" sx={{ marginBottom: { xs: 2, sm: 4 }, textAlign: 'center' }}>
             Hi, {username}!
           </Typography>
-          <Box className="cardContainer">
+          <Box className="cardContainer" sx={{ width: '100%' }}>
             <Typography variant="h5" sx={{ marginBottom: 2, textAlign: 'center' }}>
               Live Quizzes
             </Typography>
