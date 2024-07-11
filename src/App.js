@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import QuizStart from './components/QuizStart';
-import QuizQuestion from './components/QuizQuestion';
-import Leaderboard from './components/Leaderboard';
+import QuizStart from './QuizStart/QuizStart';
+import QuizQuestion from './QuizQuestions/QuizQuestion';
+import Leaderboard from './Leaderboard/Leaderboard';
 import Summary from './components/Summary';
-import Home from './components/Home';
+import Home from './Home/Home';
 
 const dummyQuestions = [
   {
