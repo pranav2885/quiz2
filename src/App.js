@@ -6,7 +6,8 @@ import Uploadpage from './Uploadpage/Uploadpage';
 import Summary from './components/Summary';
 import Home from './Home/Home';
 import Hostpage from './Hostpage/Hostpage';
-import Snowflake from './Snowflake/Snowflake'; // Import the Snowflake component
+import Snowflake from './Snowflake/Snowflake';
+import Dashboard from './Dashboard/Dashboard'; // Import the Dashboard component
 import './App.css'; // Ensure this imports the Snowflake.css as well
 
 const dummyQuestions = [
@@ -118,6 +119,10 @@ const App = () => {
     setPage('host');
   };
 
+  const goToDashboard = () => {
+    setPage('dashboard');
+  };
+
   // Adjust the number of snowflakes based on the screen size
   const snowflakeCount = isMobile ? 50 : 200;
   const snowflakes = showSnowflakes ? Array.from({ length: snowflakeCount }).map((_, index) => (
@@ -135,6 +140,7 @@ const App = () => {
           onLogout={logout} 
           onShowLeaderboard={showLeaderboard} 
           onHostPage={goToHostPage} 
+          onGoToDashboard={goToDashboard} // Add navigation to Dashboard
         />
       )}
       {page === 'host' && (
@@ -169,6 +175,9 @@ const App = () => {
       )}
       {page === 'upload' && (
         <Uploadpage onUpload={handleUploadedQuestions} />
+      )}
+      {page === 'dashboard' && ( // Add condition to render Dashboard
+        <Dashboard />
       )}
     </div>
   );
