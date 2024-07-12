@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import QuizStart from './QuizStart/QuizStart';
 import QuizQuestion from './QuizQuestions/QuizQuestion';
 import Leaderboard from './Leaderboard/Leaderboard';
@@ -49,6 +49,25 @@ const App = () => {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [username, setUsername] = useState('User');
   const [uploadedQuestions, setUploadedQuestions] = useState([]);
+  const [showSnowflakes, setShowSnowflakes] = useState(false);
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 600);
+
+  useEffect(() => {
+    // Delay the snowfall by 2-3 seconds
+    const timer = setTimeout(() => {
+      setShowSnowflakes(true);
+    }, 2000); // 2 seconds delay
+    return () => clearTimeout(timer);
+  }, []);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 600);
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   const startQuiz = () => {
     setPage('quizStart');
@@ -99,9 +118,11 @@ const App = () => {
     setPage('host');
   };
 
-  const snowflakes = Array.from({ length: 100 }).map((_, index) => (
+  // Adjust the number of snowflakes based on the screen size
+  const snowflakeCount = isMobile ? 50 : 200;
+  const snowflakes = showSnowflakes ? Array.from({ length: snowflakeCount }).map((_, index) => (
     <Snowflake key={index} />
-  ));
+  )) : null;
 
   return (
     <div>
