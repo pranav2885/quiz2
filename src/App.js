@@ -2,8 +2,12 @@ import React, { useState } from 'react';
 import QuizStart from './QuizStart/QuizStart';
 import QuizQuestion from './QuizQuestions/QuizQuestion';
 import Leaderboard from './Leaderboard/Leaderboard';
+import Uploadpage from './Uploadpage/Uploadpage';
 import Summary from './components/Summary';
 import Home from './Home/Home';
+import Hostpage from './Hostpage/Hostpage';
+import Snowflake from './Snowflake/Snowflake'; // Import the Snowflake component
+import './App.css'; // Ensure this imports the Snowflake.css as well
 
 const dummyQuestions = [
   {
@@ -19,7 +23,7 @@ const dummyQuestions = [
     options: ['Mars', 'Earth', 'Jupiter', 'Saturn'],
   },
   {
-    question: "What is the largest ocean onEarth?",
+    question: "What is the largest ocean on Earth?",
     options: ['Pacific Ocean', 'Atlantic Ocean', 'Indian Ocean', 'Arctic Ocean'],
   },
   {
@@ -44,6 +48,7 @@ const App = () => {
   const [page, setPage] = useState('home');
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [username, setUsername] = useState('User');
+  const [uploadedQuestions, setUploadedQuestions] = useState([]);
 
   const startQuiz = () => {
     setPage('quizStart');
@@ -55,7 +60,7 @@ const App = () => {
   };
 
   const nextQuestion = (selectedOption) => {
-    if (currentQuestionIndex < dummyQuestions.length - 1) {
+    if (currentQuestionIndex < (uploadedQuestions.length ? uploadedQuestions : dummyQuestions).length - 1) {
       setCurrentQuestionIndex(currentQuestionIndex + 1);
     } else {
       setPage('leaderboard');
@@ -81,14 +86,41 @@ const App = () => {
     startQuiz();
   };
 
+  const handleUploadedQuestions = (questions) => {
+    setUploadedQuestions(questions);
+    setPage('home');
+  };
+
+  const handleCreateQuiz = () => {
+    setPage('upload');
+  };
+
+  const goToHostPage = () => {
+    setPage('host');
+  };
+
+  const snowflakes = Array.from({ length: 100 }).map((_, index) => (
+    <Snowflake key={index} />
+  ));
+
   return (
     <div>
+      {snowflakes} {/* Render snowflakes */}
       {page === 'home' && (
         <Home 
           username={username} 
           quizzes={sampleQuizzes} 
           onQuizSelect={selectQuiz} 
           onLogout={logout} 
+          onShowLeaderboard={showLeaderboard} 
+          onHostPage={goToHostPage} 
+        />
+      )}
+      {page === 'host' && (
+        <Hostpage 
+          username={username} 
+          onCreateQuiz={handleCreateQuiz} 
+          onShowLeaderboard={showLeaderboard} 
         />
       )}
       {page === 'quizStart' && (
@@ -98,8 +130,8 @@ const App = () => {
       )}
       {page === 'quiz' && (
         <QuizQuestion
-          question={dummyQuestions[currentQuestionIndex].question}
-          options={dummyQuestions[currentQuestionIndex].options}
+          question={(uploadedQuestions.length ? uploadedQuestions : dummyQuestions)[currentQuestionIndex].question}
+          options={(uploadedQuestions.length ? uploadedQuestions : dummyQuestions)[currentQuestionIndex].options}
           onNext={nextQuestion}
         />
       )}
@@ -113,6 +145,9 @@ const App = () => {
         <Summary 
           onRestart={restartQuiz} 
         />
+      )}
+      {page === 'upload' && (
+        <Uploadpage onUpload={handleUploadedQuestions} />
       )}
     </div>
   );

@@ -1,17 +1,27 @@
+body {
+  background-color: #121212; /* Dark background */
+  color: #e0e0e0; /* Light text color */
+  font-family: 'Montserrat', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
 .cardContainer {
-    width: calc(100% - 32px); /* Adjust the width to account for padding */
-    height: calc(100% - 32px); /* Adjust the height to account for padding */
-    background-color: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
-    border-radius: 12px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    overflow-x: hidden;
-    position: relative;
-    padding: 16px; /* Adjust padding inside the card container */
-    box-sizing: border-box; /* Ensures the padding is included in the element's total width and height */
-    margin: 8px; /* Adjust margin to create gap around the card container */
+  width: 100%;
+  padding: 20px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+@media (max-width: 992px) {
+  .cardContainer {
+    padding: 10px;
   }
-  
+}
+
 /* sx={{
     width: '100%',
     maxWidth: '100vw',

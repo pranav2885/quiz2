@@ -8,7 +8,7 @@ import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import ScoreIcon from '@mui/icons-material/Score';
 import "../styles/cardsContainer.css";
 
-const Home = ({ username, onQuizSelect, onShowLeaderboard }) => {
+const Home = ({ username, onQuizSelect, onShowLeaderboard, onHostPage }) => {
   const [hoveredIndex, setHoveredIndex] = useState(-1);
 
   const handleMouseEnter = (index) => {
@@ -36,13 +36,13 @@ const Home = ({ username, onQuizSelect, onShowLeaderboard }) => {
   return (
     <Box
       sx={{
-        maxWidth: '100%',
-        fontFamily: 'Roboto, sans-serif',
+        Width: '100%',
+        // fontFamily: 'Roboto, sans-serif',
         minHeight: '100vh',
         display: 'flex',
         flexDirection: 'column',
-        alignItems: 'left',
-        justifyContent: 'left',
+        alignItems: 'center',
+        justifyContent: 'center',
         position: 'relative',
         overflow: 'hidden',
         background: 'linear-gradient(to top, #00008B, #87CEEB)',
@@ -72,6 +72,9 @@ const Home = ({ username, onQuizSelect, onShowLeaderboard }) => {
           <Button color="inherit" onClick={onShowLeaderboard}>
             Leaderboard
           </Button>
+          <Button color="inherit" onClick={onHostPage}>
+            Host a Quiz
+          </Button>
           <Link href="https://www.example.com/dashboard" target="_blank" color="inherit" underline="none">
             <Button color="inherit">Dashboard</Button>
           </Link>
@@ -82,19 +85,19 @@ const Home = ({ username, onQuizSelect, onShowLeaderboard }) => {
           flex: 1,
           display: 'flex',
           flexDirection: 'column',
-          justifyContent: 'left',
-          alignItems: 'left',
-          padding: { xs: 2, sm: 4 }, // Adjust padding here
+          justifyContent: 'center',
+          alignItems: 'center',
+          padding: { xs: 2, sm: 4 },
           overflow: 'hidden',
-          margin: { xs: '10px', sm: '20px' }, // Adjust margin here
-          maxWidth: '100%',
+          margin: { xs: '10px', sm: '20px' }
+          // maxWidth: '100%',
         }}
       >
         <animated.div style={springProps}>
-          <Typography variant="h4" sx={{ marginBottom: { xs: 2, sm: 4 }, textAlign: 'center' }}>
+          <Typography variant="h6" sx={{ marginBottom: { xs: 2, sm: 4 }, textAlign: 'center' }}>
             Hi, {username}!
           </Typography>
-          <Box className="cardContainer">
+          <Box className="cardContainer" sx={{ width: '100%' }}>
             <Typography variant="h5" sx={{ marginBottom: 2, textAlign: 'center' }}>
               Live Quizzes
             </Typography>
