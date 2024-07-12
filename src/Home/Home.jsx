@@ -36,12 +36,8 @@ const Home = ({ username, onQuizSelect, onShowLeaderboard, onHostPage }) => {
   return (
     <Box
       sx={{
-<<<<<<< HEAD
         Width: '100%',
         // fontFamily: 'Roboto, sans-serif',
-=======
-        width: '100%',
->>>>>>> e2af3ffe58b7d046345e1f3377e79cb89391e765
         minHeight: '100vh',
         display: 'flex',
         flexDirection: 'column',
@@ -93,12 +89,8 @@ const Home = ({ username, onQuizSelect, onShowLeaderboard, onHostPage }) => {
           alignItems: 'center',
           padding: { xs: 2, sm: 4 },
           overflow: 'hidden',
-<<<<<<< HEAD
           margin: { xs: '10px', sm: '20px' }
           // maxWidth: '100%',
-=======
-          margin: { xs: '10px', sm: '20px' },
->>>>>>> e2af3ffe58b7d046345e1f3377e79cb89391e765
         }}
       >
         <animated.div style={springProps}>
