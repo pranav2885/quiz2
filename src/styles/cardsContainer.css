@@ -21,6 +21,7 @@ body {
     padding: 10px;
   }
 }
+<<<<<<< HEAD
 
 /* sx={{
     width: '100%',
@@ -33,3 +34,5 @@ body {
     overflowX: 'hidden', // Ensure the container is not too wide on large screens
     position: 'relative',
   }} */
+=======
+>>>>>>> e2af3ffe58b7d046345e1f3377e79cb89391e765
