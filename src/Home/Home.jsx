@@ -89,12 +89,8 @@ const Home = ({ username, onQuizSelect, onShowLeaderboard, onHostPage }) => {
           alignItems: 'center',
           padding: { xs: 2, sm: 4 },
           overflow: 'hidden',
-<<<<<<< HEAD
           margin: { xs: '10px', sm: '20px' }
           // maxWidth: '100%',
-=======
-          margin: { xs: '10px', sm: '20px' },
->>>>>>> 41bd6622fb406d76a60490f45f088587bcef4f2d
         }}
       >
         <animated.div style={springProps}>
