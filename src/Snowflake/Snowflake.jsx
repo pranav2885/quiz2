@@ -6,7 +6,7 @@ const Snowflake = () => {
   const [styles, setStyles] = useState({});
 
   useEffect(() => {
-    const size = Math.random() * 6 + 7;
+    const size = Math.random() * 3 + 5;
     const left = Math.random() * 100;
     // Adjust these values to change the speed
     const minDuration = 13; // minimum duration for falling

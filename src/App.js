@@ -7,8 +7,8 @@ import Summary from './components/Summary';
 import Home from './Home/Home';
 import Hostpage from './Hostpage/Hostpage';
 import Snowflake from './Snowflake/Snowflake';
-import Dashboard from './Dashboard/Dashboard'; // Import the Dashboard component
-import './App.css'; // Ensure this imports the Snowflake.css as well
+import Dashboard from './Dashboard/Dashboard';
+import './App.css';
 
 const dummyQuestions = [
   {
@@ -54,10 +54,9 @@ const App = () => {
   const [isMobile, setIsMobile] = useState(window.innerWidth < 600);
 
   useEffect(() => {
-    // Delay the snowfall by 2-3 seconds
     const timer = setTimeout(() => {
       setShowSnowflakes(true);
-    }, 2000); // 2 seconds delay
+    }, 2000);
     return () => clearTimeout(timer);
   }, []);
 
@@ -65,7 +64,6 @@ const App = () => {
     const handleResize = () => {
       setIsMobile(window.innerWidth < 600);
     };
-
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);
@@ -123,7 +121,6 @@ const App = () => {
     setPage('dashboard');
   };
 
-  // Adjust the number of snowflakes based on the screen size
   const snowflakeCount = isMobile ? 50 : 200;
   const snowflakes = showSnowflakes ? Array.from({ length: snowflakeCount }).map((_, index) => (
     <Snowflake key={index} />
@@ -131,28 +128,28 @@ const App = () => {
 
   return (
     <div>
-      {snowflakes} {/* Render snowflakes */}
+      {snowflakes}
       {page === 'home' && (
-        <Home 
-          username={username} 
-          quizzes={sampleQuizzes} 
-          onQuizSelect={selectQuiz} 
-          onLogout={logout} 
-          onShowLeaderboard={showLeaderboard} 
-          onHostPage={goToHostPage} 
-          onGoToDashboard={goToDashboard} // Add navigation to Dashboard
+        <Home
+          username={username}
+          quizzes={sampleQuizzes}
+          onQuizSelect={selectQuiz}
+          onLogout={logout}
+          onShowLeaderboard={showLeaderboard}
+          onHostPage={goToHostPage}
+          onGoToDashboard={goToDashboard}
         />
       )}
       {page === 'host' && (
-        <Hostpage 
-          username={username} 
-          onCreateQuiz={handleCreateQuiz} 
-          onShowLeaderboard={showLeaderboard} 
+        <Hostpage
+          username={username}
+          onCreateQuiz={handleCreateQuiz}
+          onShowLeaderboard={showLeaderboard}
         />
       )}
       {page === 'quizStart' && (
-        <QuizStart 
-          onStartQuiz={beginQuiz} 
+        <QuizStart
+          onStartQuiz={beginQuiz}
         />
       )}
       {page === 'quiz' && (
@@ -163,20 +160,20 @@ const App = () => {
         />
       )}
       {page === 'leaderboard' && (
-        <Leaderboard 
-          data={sampleLeaderboard} 
-          onRestart={restartQuiz} 
+        <Leaderboard
+          data={sampleLeaderboard}
+          onRestart={restartQuiz}
         />
       )}
       {page === 'summary' && (
-        <Summary 
-          onRestart={restartQuiz} 
+        <Summary
+          onRestart={restartQuiz}
         />
       )}
       {page === 'upload' && (
         <Uploadpage onUpload={handleUploadedQuestions} />
       )}
-      {page === 'dashboard' && ( // Add condition to render Dashboard
+      {page === 'dashboard' && (
         <Dashboard />
       )}
     </div>

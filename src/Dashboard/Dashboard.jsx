@@ -108,7 +108,7 @@ const Dashboard = () => {
                   InputProps={{ style: { color: '#fff' } }}
                 />
                 <TextField
-                  label="Mobile Number"
+                  label="Mobile"
                   name="mobile"
                   value={formData.mobile}
                   onChange={handleChange}
@@ -117,36 +117,49 @@ const Dashboard = () => {
                   InputLabelProps={{ style: { color: '#fff' } }}
                   InputProps={{ style: { color: '#fff' } }}
                 />
-                <Button variant="contained" color="primary" onClick={handleSubmit}>
-                  Save
+                <Button variant="contained" onClick={handleSubmit} sx={{ marginTop: 2 }}>
+                  Login
                 </Button>
               </Box>
             </Card>
           </animated.div>
         ) : (
           <animated.div style={springProps}>
-            <Card sx={{ padding: 4, maxWidth: 800, width: '100%', backgroundColor: 'rgba(255, 255, 255, 0.2)' }}>
-              <Grid container spacing={2}>
-                <Grid item xs={12} md={4}>
-                  <Avatar
-                    alt="User Image"
-                    src="https://via.placeholder.com/150"
-                    sx={{ width: 150, height: 150, marginBottom: 2 }}
-                  />
-                  <Typography variant="h6" sx={{ color: '#fff' }}>{userData.name}</Typography>
-                  <Typography variant="body1" sx={{ color: '#fff' }}>{userData.email}</Typography>
-                </Grid>
-                <Grid item xs={12} md={8}>
-                  <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
-                    <Typography variant="body1" sx={{ color: '#fff' }}>Registration Number: {userData.registrationNumber}</Typography>
-                    <Typography variant="body1" sx={{ color: '#fff' }}>Role: {userData.role}</Typography>
-                    <Typography variant="body1" sx={{ color: '#fff' }}>Course: {userData.course}</Typography>
-                    <Typography variant="body1" sx={{ color: '#fff' }}>Section: {userData.section}</Typography>
-                    <Typography variant="body1" sx={{ color: '#fff' }}>Mobile: {userData.mobile}</Typography>
-                  </Box>
-                </Grid>
+            <Grid container spacing={3} justifyContent="center">
+              <Grid item xs={12} sm={6} md={4}>
+                <Card sx={{ height: '100%', backgroundColor: 'rgba(255, 255, 255, 0.2)' }}>
+                  <CardContent sx={{ textAlign: 'center' }}>
+                    <Avatar
+                      src="/avatar.jpg"
+                      alt={userData.name}
+                      sx={{ width: 80, height: 80, margin: '0 auto 10px' }}
+                    />
+                    <Typography variant="h5" gutterBottom>
+                      {userData.name}
+                    </Typography>
+                    <Typography variant="body1">{userData.role}</Typography>
+                    <Typography variant="body2" color="textSecondary">
+                      {userData.email}
+                    </Typography>
+                    <Typography variant="body2" color="textSecondary">
+                      Registration No: {userData.registrationNumber}
+                    </Typography>
+                  </CardContent>
+                </Card>
               </Grid>
-            </Card>
+              <Grid item xs={12} sm={6} md={4}>
+                <Card sx={{ height: '100%', backgroundColor: 'rgba(255, 255, 255, 0.2)' }}>
+                  <CardContent>
+                    <Typography variant="h6" gutterBottom>
+                      Course Information
+                    </Typography>
+                    <Typography variant="body1">Course: {userData.course}</Typography>
+                    <Typography variant="body1">Section: {userData.section}</Typography>
+                    <Typography variant="body1">Mobile: {userData.mobile}</Typography>
+                  </CardContent>
+                </Card>
+              </Grid>
+            </Grid>
           </animated.div>
         )}
       </Container>
