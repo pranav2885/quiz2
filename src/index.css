@@ -3,12 +3,9 @@
 body {
   margin: 0;
   font-family: 'Roboto', sans-serif;
-<<<<<<< HEAD
   background-color: #87CEEB; /* Light blue color */
   
 }
 ::-webkit-scrollbar{
   display: none;
-=======
->>>>>>> 08b303ae2783f103bcaba5de2f7bb8997337aadf
 }
