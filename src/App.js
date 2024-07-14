@@ -42,7 +42,7 @@ const sampleLeaderboard = [
 const sampleQuizzes = [
   { title: 'Geography Quiz' },
   { title: 'Science Quiz' },
-  { title: 'Literature Quiz' },
+  { title: 'Literature  Quiz' },
 ];
 
 const App = () => {
