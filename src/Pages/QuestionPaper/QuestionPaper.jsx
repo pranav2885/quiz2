@@ -1,4 +1,8 @@
 import React, { useState } from "react";
+import Tooltip from "@mui/material/Tooltip";
+import DeleteRoundedIcon from '@mui/icons-material/DeleteRounded';
+import './QuestionPaper.css'
+
 import {
   Card,
   CardContent,
@@ -99,23 +103,23 @@ const QuestionPaper = () => {
 
   return (
     <>
-    <Card sx={{ maxWidth: 800, margin: "20px auto" }}>
+    <Card sx={{ maxWidth: 800, margin: "20px auto" }} elevation={6} >
       <CardContent>
         <Typography variant="h5" gutterBottom>
           Create Quiz
         </Typography>
         <Grid container spacing={2}>
-          <Grid item xs={6}>
+          <Grid item xs={12}>
             <TextField
             label="Quiz Title"
-            variant="outlined"
+            variant="standard"
             fullWidth
             value={questionPaper.title}
             onChange={(e) => handleChange("title", e.target.value)}
             margin="normal"
           />
           </Grid>
-          <Grid item xs={6}>
+          {/* <Grid item xs={6}>
             <TextField
             label="Creator Email"
             variant="outlined"
@@ -124,7 +128,7 @@ const QuestionPaper = () => {
             onChange={(e) => handleChange("CreaterMail", e.target.value)}
             margin="normal"
           />
-          </Grid>
+          </Grid> */}
           <Grid item xs={6}>
             <TextField
             label="Open Time"
@@ -178,12 +182,14 @@ const QuestionPaper = () => {
                       }
                       fullWidth
                     />
+                    <Tooltip title='Delete' placement="right">
                     <IconButton
                       onClick={() => removeOption(qIndex, oIndex)}
                       disabled={question.options.length === 1}
                     >
-                      <Remove />
+                      <DeleteRoundedIcon sx={{color: "#E86D6D"}} />
                     </IconButton>
+                    </Tooltip>
                   </Box>
                 </Grid>
               ))}
@@ -202,6 +208,7 @@ const QuestionPaper = () => {
                 </center>
               </Grid>
               <Grid item xs={6}>
+                <Tooltip title='Start counting from zero' arrow placement="top">
                 <TextField
                   label="Correct Option (Index)"
                   type="number"
@@ -223,6 +230,7 @@ const QuestionPaper = () => {
                   }}
                   margin="normal"
                 />
+                </Tooltip>
               </Grid>
               <Grid item xs={6}>
                 <TextField
