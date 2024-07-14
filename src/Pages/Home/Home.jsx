@@ -1,22 +1,5 @@
 import React, { useState } from "react";
 import {
-<<<<<<< HEAD:src/Home/Home.jsx
-  Box,
-  Typography,
-  Button,
-  AppBar,
-  Toolbar,
-  Container,
-  Grid,
-  Card,
-  CardContent,
-} from "@mui/material";
-import { useSpring, animated } from "@react-spring/web";
-import DateRangeIcon from "@mui/icons-material/DateRange";
-import AccessTimeIcon from "@mui/icons-material/AccessTime";
-import ScoreIcon from "@mui/icons-material/Score";
-import "../styles/cardsContainer.css";
-=======
   Box, Typography, Button, Link, AppBar, Toolbar, Container, Grid, Card, CardContent,
 } from '@mui/material';
 import { useSpring, animated } from '@react-spring/web';
@@ -24,7 +7,6 @@ import DateRangeIcon from '@mui/icons-material/DateRange';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import ScoreIcon from '@mui/icons-material/Score';
 import "../../styles/cardsContainer.css";
->>>>>>> 08b303ae2783f103bcaba5de2f7bb8997337aadf:src/Pages/Home/Home.jsx
 
 const Home = ({
   username,
