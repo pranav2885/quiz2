@@ -6,7 +6,7 @@ import { useSpring, animated } from '@react-spring/web';
 import DateRangeIcon from '@mui/icons-material/DateRange';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import ScoreIcon from '@mui/icons-material/Score';
-import "../styles/cardsContainer.css";
+import "../../styles/cardsContainer.css";
 
 const Home = ({ username, onQuizSelect, onShowLeaderboard, onHostPage }) => {
   const [hoveredIndex, setHoveredIndex] = useState(-1);

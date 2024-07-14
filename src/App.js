@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import QuizStart from './QuizStart/QuizStart';
-import QuizQuestion from './QuizQuestions/QuizQuestion';
-import Leaderboard from './Leaderboard/Leaderboard';
-import Uploadpage from './Uploadpage/Uploadpage';
+import QuizStart from './Pages/QuizStart/QuizStart';
+import QuestionPaper from './Pages/QuestionPaper/QuestionPaper';
+import Leaderboard from './Pages/Leaderboard/Leaderboard';
+import Uploadpage from './Pages/Uploadpage/Uploadpage';
 import Summary from './components/Summary';
-import Home from './Home/Home';
-import Hostpage from './Hostpage/Hostpage';
+import Home from './Pages/Home/Home';
+import Hostpage from './Pages/Hostpage/Hostpage';
 import Snowflake from './Snowflake/Snowflake';
-import Dashboard from './Dashboard/Dashboard'; // Import the Dashboard component
+import Dashboard from './Pages/Dashboard/Dashboard'; // Import the Dashboard component
 import './App.css'; // Ensure this imports the Snowflake.css as well
 
 const dummyQuestions = [
@@ -116,7 +116,7 @@ const App = () => {
   };
 
   const goToHostPage = () => {
-    setPage('host');
+    setPage('questionPaper'); // Change to navigate to QuestionPaper page
   };
 
   const goToDashboard = () => {
@@ -139,7 +139,7 @@ const App = () => {
           onQuizSelect={selectQuiz} 
           onLogout={logout} 
           onShowLeaderboard={showLeaderboard} 
-          onHostPage={goToHostPage} 
+          onHostPage={goToHostPage} // Update to use the new function
           onGoToDashboard={goToDashboard} // Add navigation to Dashboard
         />
       )}
@@ -156,11 +156,10 @@ const App = () => {
         />
       )}
       {page === 'quiz' && (
-        <QuizQuestion
-          question={(uploadedQuestions.length ? uploadedQuestions : dummyQuestions)[currentQuestionIndex].question}
-          options={(uploadedQuestions.length ? uploadedQuestions : dummyQuestions)[currentQuestionIndex].options}
-          onNext={nextQuestion}
-        />
+        <QuestionPaper />
+      )}
+      {page === 'questionPaper' && (
+        <QuestionPaper />
       )}
       {page === 'leaderboard' && (
         <Leaderboard 

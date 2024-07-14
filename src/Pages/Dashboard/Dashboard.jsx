@@ -3,7 +3,7 @@ import {
   Box, Typography, Button, AppBar, Toolbar, Container, Grid, Card, CardContent, TextField, Avatar,
 } from '@mui/material';
 import { useSpring, animated } from '@react-spring/web';
-import "../styles/cardsContainer.css";
+import "../../styles/cardsContainer.css";
 
 const Dashboard = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
