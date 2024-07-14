@@ -27,7 +27,7 @@ const QuestionPaper = () => {
       },
     ],
     openTime: "",
-    closeTime: "",
+    duration: "",
   });
 
   const handleChange = (field, value) => {
@@ -143,8 +143,8 @@ const QuestionPaper = () => {
             type="number"
             variant="outlined"
             fullWidth
-            value={questionPaper.closeTime}
-            onChange={(e) => handleChange("closeTime", e.target.value)}
+            value={questionPaper.duration}
+            onChange={(e) => handleChange("duration", e.target.value)}
             margin="normal"
             InputLabelProps={{ shrink: true }}
           />
