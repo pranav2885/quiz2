@@ -7,8 +7,8 @@ import Summary from './components/Summary';
 import Home from './Pages/Home/Home';
 import Hostpage from './Pages/Hostpage/Hostpage';
 import Snowflake from './Snowflake/Snowflake';
-import Dashboard from './Pages/Dashboard/Dashboard'; // Import the Dashboard component
-import './App.css'; // Ensure this imports the Snowflake.css as well
+import Dashboard from './Pages/Dashboard/Dashboard'; 
+import './App.css'; 
 
 const dummyQuestions = [
   {

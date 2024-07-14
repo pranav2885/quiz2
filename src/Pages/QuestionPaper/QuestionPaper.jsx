@@ -139,8 +139,8 @@ const QuestionPaper = () => {
           </Grid>
           <Grid item xs={6}>
             <TextField
-            label="Close Time"
-            type="datetime-local"
+            label="Duration (in min)"
+            type="number"
             variant="outlined"
             fullWidth
             value={questionPaper.closeTime}
