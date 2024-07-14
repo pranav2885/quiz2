@@ -7,8 +7,13 @@ import Summary from './components/Summary';
 import Home from './Pages/Home/Home';
 import Hostpage from './Pages/Hostpage/Hostpage';
 import Snowflake from './Snowflake/Snowflake';
+<<<<<<< HEAD
 import Dashboard from './Pages/Dashboard/Dashboard';
 import './App.css';
+=======
+import Dashboard from './Pages/Dashboard/Dashboard'; 
+import './App.css'; 
+>>>>>>> e84ec99a992842608fe38a04830fc4b8f573cf63
 
 const dummyQuestions = [
   {
@@ -130,6 +135,7 @@ const App = () => {
     <div>
       {snowflakes}
       {page === 'home' && (
+<<<<<<< HEAD
         <Home
           username={username}
           quizzes={sampleQuizzes}
@@ -138,6 +144,16 @@ const App = () => {
           onShowLeaderboard={showLeaderboard}
           onHostPage={goToHostPage}
           onGoToDashboard={goToDashboard}
+=======
+        <Home 
+          username={username} 
+          quizzes={sampleQuizzes} 
+          onQuizSelect={selectQuiz} 
+          onLogout={logout} 
+          onShowLeaderboard={showLeaderboard} 
+          onHostPage={goToHostPage} // Update to use the new function
+          onGoToDashboard={goToDashboard} // Add navigation to Dashboard
+>>>>>>> e84ec99a992842608fe38a04830fc4b8f573cf63
         />
       )}
       {page === 'host' && (
