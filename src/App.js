@@ -1,14 +1,19 @@
 import React, { useState, useEffect } from 'react';
-import QuizStart from './QuizStart/QuizStart';
-import QuizQuestion from './QuizQuestions/QuizQuestion';
-import Leaderboard from './Leaderboard/Leaderboard';
-import Uploadpage from './Uploadpage/Uploadpage';
+import QuizStart from './Pages/QuizStart/QuizStart';
+import QuestionPaper from './Pages/QuestionPaper/QuestionPaper';
+import Leaderboard from './Pages/Leaderboard/Leaderboard';
+import Uploadpage from './Pages/Uploadpage/Uploadpage';
 import Summary from './components/Summary';
-import Home from './Home/Home';
-import Hostpage from './Hostpage/Hostpage';
+import Home from './Pages/Home/Home';
+import Hostpage from './Pages/Hostpage/Hostpage';
 import Snowflake from './Snowflake/Snowflake';
+<<<<<<< HEAD
 import Dashboard from './Dashboard/Dashboard';
 import './App.css';
+=======
+import Dashboard from './Pages/Dashboard/Dashboard'; 
+import './App.css'; 
+>>>>>>> 08b303ae2783f103bcaba5de2f7bb8997337aadf
 
 const dummyQuestions = [
   {
@@ -42,7 +47,7 @@ const sampleLeaderboard = [
 const sampleQuizzes = [
   { title: 'Geography Quiz' },
   { title: 'Science Quiz' },
-  { title: 'Literature Quiz' },
+  { title: 'Literature  Quiz' },
 ];
 
 const App = () => {
@@ -114,7 +119,7 @@ const App = () => {
   };
 
   const goToHostPage = () => {
-    setPage('host');
+    setPage('questionPaper'); // Change to navigate to QuestionPaper page
   };
 
   const goToDashboard = () => {
@@ -130,6 +135,7 @@ const App = () => {
     <div>
       {snowflakes}
       {page === 'home' && (
+<<<<<<< HEAD
         <Home
           username={username}
           quizzes={sampleQuizzes}
@@ -138,6 +144,16 @@ const App = () => {
           onShowLeaderboard={showLeaderboard}
           onHostPage={goToHostPage}
           onGoToDashboard={goToDashboard}
+=======
+        <Home 
+          username={username} 
+          quizzes={sampleQuizzes} 
+          onQuizSelect={selectQuiz} 
+          onLogout={logout} 
+          onShowLeaderboard={showLeaderboard} 
+          onHostPage={goToHostPage} // Update to use the new function
+          onGoToDashboard={goToDashboard} // Add navigation to Dashboard
+>>>>>>> 08b303ae2783f103bcaba5de2f7bb8997337aadf
         />
       )}
       {page === 'host' && (
@@ -153,11 +169,10 @@ const App = () => {
         />
       )}
       {page === 'quiz' && (
-        <QuizQuestion
-          question={(uploadedQuestions.length ? uploadedQuestions : dummyQuestions)[currentQuestionIndex].question}
-          options={(uploadedQuestions.length ? uploadedQuestions : dummyQuestions)[currentQuestionIndex].options}
-          onNext={nextQuestion}
-        />
+        <QuestionPaper />
+      )}
+      {page === 'questionPaper' && (
+        <QuestionPaper />
       )}
       {page === 'leaderboard' && (
         <Leaderboard
