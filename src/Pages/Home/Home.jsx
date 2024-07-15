@@ -202,7 +202,7 @@ const Home = ({
                           variant="body2"
                           sx={{ color: "rgba(255, 255, 255, 0.7)" }}
                         >
-                          {quiz.startDate} - {quiz.endDate}
+                          {quiz.startDate}
                         </Typography>
                       </Box>
                       <Box
