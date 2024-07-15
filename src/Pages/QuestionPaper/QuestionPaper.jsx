@@ -137,16 +137,6 @@ const QuestionPaper = () => {
                 margin="normal"
               />
             </Grid>
-            {/* <Grid item xs={6}>
-              <TextField
-                label="Creator Email"
-                variant="outlined"
-                fullWidth
-                value={questionPaper.CreaterMail}
-                onChange={(e) => handleChange("CreaterMail", e.target.value)}
-                margin="normal"
-              />
-            </Grid> */}
             <Grid item xs={6}>
               <TextField
                 label="Open Time"
