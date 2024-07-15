@@ -10,7 +10,7 @@ const QuizStart = ({ onStartQuiz }) => {
         alignItems: 'center',
         justifyContent: 'center',
         height: '100vh',
-        background: 'linear-gradient(to top, #00008B, #87CEEB)',
+        background: 'linear-gradient(to top, #508c9f, #508c9f)',
         color: '#fff',
       }}
     >
