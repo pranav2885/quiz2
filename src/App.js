@@ -7,8 +7,8 @@ import Summary from './components/Summary';
 import Home from './Pages/Home/Home';
 import Hostpage from './Pages/Hostpage/Hostpage';
 import Snowflake from './components/Snowflake/Snowflake';
-import Dashboard from './Pages/Dashboard/Dashboard';
-import './App.css';
+import Dashboard from './Pages/Dashboard/Dashboard'; 
+import './App.css'; 
 
 const dummyQuestions = [
   {
@@ -42,7 +42,7 @@ const sampleLeaderboard = [
 const sampleQuizzes = [
   { title: 'Geography Quiz' },
   { title: 'Science Quiz' },
-  { title: 'Literature Quiz' },
+  { title: 'Literature  Quiz' },
 ];
 
 const App = () => {
@@ -54,10 +54,9 @@ const App = () => {
   const [isMobile, setIsMobile] = useState(window.innerWidth < 600);
 
   useEffect(() => {
-    // Delay the snowfall by 2-3 seconds
     const timer = setTimeout(() => {
       setShowSnowflakes(true);
-    }, 2000); // 2 seconds delay
+    }, 2000);
     return () => clearTimeout(timer);
   }, []);
 
@@ -65,18 +64,17 @@ const App = () => {
     const handleResize = () => {
       setIsMobile(window.innerWidth < 600);
     };
-
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
   const startQuiz = () => {
-    setPage('quizStart'); // Ensure this sets the correct page
+    setPage('quizStart');
   };
 
   const beginQuiz = () => {
     setCurrentQuestionIndex(0);
-    setPage('quiz'); // Ensure this sets the correct page for the quiz
+    setPage('quiz');
   };
 
   const nextQuestion = (selectedOption) => {
@@ -103,7 +101,7 @@ const App = () => {
 
   const selectQuiz = (quiz) => {
     console.log(`Selected quiz: ${quiz.title}`);
-    startQuiz(); // This should correctly call the startQuiz function
+    startQuiz();
   };
 
   const handleUploadedQuestions = (questions) => {
@@ -116,14 +114,13 @@ const App = () => {
   };
 
   const goToHostPage = () => {
-    setPage('host');
+    setPage('questionPaper'); // Change to navigate to QuestionPaper page
   };
 
   const goToDashboard = () => {
     setPage('dashboard');
   };
 
-  // Adjust the number of snowflakes based on the screen size
   const snowflakeCount = isMobile ? 50 : 200;
   const snowflakes = showSnowflakes ? Array.from({ length: snowflakeCount }).map((_, index) => (
     <Snowflake key={index} />
@@ -131,42 +128,45 @@ const App = () => {
 
   return (
     <div>
-      {snowflakes} {/* Render snowflakes */}
+      {snowflakes}
       {page === 'home' && (
-        <Home 
-          username={username} 
-          quizzes={sampleQuizzes} 
-          onQuizSelect={selectQuiz} 
-          onLogout={logout} 
-          onShowLeaderboard={showLeaderboard} 
-          onHostPage={goToHostPage} 
-          onGoToDashboard={goToDashboard} 
+        <Home
+          username={username}
+          quizzes={sampleQuizzes}
+          onQuizSelect={selectQuiz}
+          onLogout={logout}
+          onShowLeaderboard={showLeaderboard}
+          onHostPage={goToHostPage}
+          onGoToDashboard={goToDashboard}
         />
       )}
       {page === 'host' && (
-        <Hostpage 
-          username={username} 
-          onCreateQuiz={handleCreateQuiz} 
-          onShowLeaderboard={showLeaderboard} 
+        <Hostpage
+          username={username}
+          onCreateQuiz={handleCreateQuiz}
+          onShowLeaderboard={showLeaderboard}
         />
       )}
       {page === 'quizStart' && (
-        <QuizStart 
-          onStartQuiz={beginQuiz} // This correctly calls the beginQuiz function
+        <QuizStart
+          onStartQuiz={beginQuiz}
         />
       )}
       {page === 'quiz' && (
         <QuestionPaper />
       )}
+      {page === 'questionPaper' && (
+        <QuestionPaper />
+      )}
       {page === 'leaderboard' && (
-        <Leaderboard 
-          data={sampleLeaderboard} 
-          onRestart={restartQuiz} 
+        <Leaderboard
+          data={sampleLeaderboard}
+          onRestart={restartQuiz}
         />
       )}
       {page === 'summary' && (
-        <Summary 
-          onRestart={restartQuiz} 
+        <Summary
+          onRestart={restartQuiz}
         />
       )}
       {page === 'upload' && (
