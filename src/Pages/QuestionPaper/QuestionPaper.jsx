@@ -101,6 +101,7 @@ const QuestionPaper = () => {
 
   return (
     <>
+    <center>
       <Card
         sx={{
           padding: "20px",
@@ -191,13 +192,13 @@ const QuestionPaper = () => {
                         fullWidth
                       />
                       <Tooltip title='Delete' placement="right">
-                    <IconButton
-                      onClick={() => removeOption(qIndex, oIndex)}
-                      disabled={question.options.length === 1}
-                    >
-                      <DeleteRoundedIcon sx={{color: "#E86D6D"}} />
-                    </IconButton>
-                    </Tooltip>'
+                        <IconButton
+                          onClick={() => removeOption(qIndex, oIndex)}
+                          disabled={question.options.length === 1}
+                        >
+                          <DeleteRoundedIcon sx={{color: "#E86D6D"}} />
+                        </IconButton>
+                      </Tooltip>
                     </Box>
                   </Grid>
                 ))}
@@ -216,29 +217,29 @@ const QuestionPaper = () => {
                   </center>
                 </Grid>
                 <Grid item xs={6}>
-                <Tooltip title='Start counting from zero' arrow placement="top">
-                <TextField
-                  label="Correct Option (Index)"
-                  type="number"
-                  variant="outlined"
-                  value={question.correctOption}
-                  onChange={(e) =>
-                    handleQuestionChange(
-                      qIndex,
-                      "correctOption",
-                      parseInt(e.target.value)
-                    )
-                  }
-                  fullWidth
-                  InputProps={{
-                    inputProps: {
-                      min: 0,
-                      max: question.options.length - 1,
-                    },
-                  }}
-                  margin="normal"
-                />
-                </Tooltip>
+                  <Tooltip title='Start counting from zero' arrow placement="top">
+                    <TextField
+                      label="Correct Option (Index)"
+                      type="number"
+                      variant="outlined"
+                      value={question.correctOption}
+                      onChange={(e) =>
+                        handleQuestionChange(
+                          qIndex,
+                          "correctOption",
+                          parseInt(e.target.value)
+                        )
+                      }
+                      fullWidth
+                      InputProps={{
+                        inputProps: {
+                          min: 0,
+                          max: question.options.length - 1,
+                        },
+                      }}
+                      margin="normal"
+                    />
+                  </Tooltip>
                 </Grid>
                 <Grid item xs={6}>
                   <TextField
@@ -260,13 +261,14 @@ const QuestionPaper = () => {
                     margin="normal"
                   />
                 </Grid>
+                  
                 <Grid item xs={12}>
                   <Button
                     variant="contained"
                     color="secondary"
                     onClick={() => removeQuestion(qIndex)}
-                    fullWidth
-                  >
+                    style={{ width: '30%' }} // Adjust the width as needed
+                    >
                     Remove Question
                   </Button>
                 </Grid>
@@ -278,7 +280,7 @@ const QuestionPaper = () => {
               variant="contained"
               color="primary"
               onClick={addQuestion}
-              fullWidth
+              style={{ width: '30%' }} // Adjust the width as needed
             >
               Add Question
             </Button>
@@ -288,13 +290,14 @@ const QuestionPaper = () => {
               variant="contained"
               color="success"
               onClick={handleSubmit}
-              fullWidth
+              style={{ width: '30%' }} // Adjust the width as needed
             >
               Submit Quiz
             </Button>
           </Box>
         </CardContent>
       </Card>
+      </center>
     </>
   );
 };
