@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import QuizStart from './Pages/QuizStart/QuizStart';
 import QuestionPaper from './Pages/QuestionPaper/QuestionPaper';
 import Leaderboard from './Pages/Leaderboard/Leaderboard';
@@ -127,55 +128,39 @@ const App = () => {
   )) : null;
 
   return (
-    <div>
-      {snowflakes}
-      {page === 'home' && (
-        <Home
-          username={username}
-          quizzes={sampleQuizzes}
-          onQuizSelect={selectQuiz}
-          onLogout={logout}
-          onShowLeaderboard={showLeaderboard}
-          onHostPage={goToHostPage}
-          onGoToDashboard={goToDashboard}
-        />
-      )}
-      {page === 'host' && (
-        <Hostpage
-          username={username}
-          onCreateQuiz={handleCreateQuiz}
-          onShowLeaderboard={showLeaderboard}
-        />
-      )}
-      {page === 'quizStart' && (
-        <QuizStart
-          onStartQuiz={beginQuiz}
-        />
-      )}
-      {page === 'quiz' && (
-        <QuestionPaper />
-      )}
-      {page === 'questionPaper' && (
-        <QuestionPaper />
-      )}
-      {page === 'leaderboard' && (
-        <Leaderboard
-          data={sampleLeaderboard}
-          onRestart={restartQuiz}
-        />
-      )}
-      {page === 'summary' && (
-        <Summary
-          onRestart={restartQuiz}
-        />
-      )}
-      {page === 'upload' && (
-        <Uploadpage onUpload={handleUploadedQuestions} />
-      )}
-      {page === 'dashboard' && (
-        <Dashboard />
-      )}
-    </div>
+    <Router>
+      <div>
+        {snowflakes}
+        <Routes>
+          <Route path="/" element={
+            <Home
+              username={username}
+              quizzes={sampleQuizzes}
+              onQuizSelect={selectQuiz}
+              onLogout={logout}
+              onShowLeaderboard={showLeaderboard}
+              onHostPage={goToHostPage}
+              onGoToDashboard={goToDashboard}
+            />
+          } />
+          <Route path="/host" element={
+            <Hostpage
+              username={username}
+              onCreateQuiz={handleCreateQuiz}
+              onShowLeaderboard={showLeaderboard}
+            />
+          } />
+          <Route path="/quizStart" element={<QuizStart onStartQuiz={beginQuiz} />} />
+          <Route path="/quiz" element={<QuestionPaper />} />
+          <Route path="/questionPaper" element={<QuestionPaper />} />
+          <Route path="/leaderboard" element={<Leaderboard data={sampleLeaderboard} onRestart={restartQuiz} />} />
+          <Route path="/summary" element={<Summary onRestart={restartQuiz} />} />
+          <Route path="/upload" element={<Uploadpage onUpload={handleUploadedQuestions} />} />
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="*" element={<Navigate to="/" />} />
+        </Routes>
+      </div>
+    </Router>
   );
 };
 
