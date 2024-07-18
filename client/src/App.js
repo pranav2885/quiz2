@@ -7,19 +7,27 @@ import { sampleQuizzes } from './constants/sampleQuizzes';
 import './App.css';
 
 const App = () => {
-  const [page, setPage] = useState('home');
-  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
-  const [username, setUsername] = useState('User');
-  const [uploadedQuestions, setUploadedQuestions] = useState([]);
-  const [showSnowflakes, setShowSnowflakes] = useState(false);
-  const [isMobile, setIsMobile] = useState(window.innerWidth < 600);
 
+  // Snow Flakes
+  const [showSnowflakes, setShowSnowflakes] = useState(false);
   useEffect(() => {
     const timer = setTimeout(() => {
       setShowSnowflakes(true);
     }, 2000);
     return () => clearTimeout(timer);
   }, []);
+  const snowflakeCount = isMobile ? 50 : 200;
+  const snowflakes = showSnowflakes ? Array.from({ length: snowflakeCount }).map((_, index) => (
+    <Snowflake key={index} />
+  )) : null;
+
+  
+  const [page, setPage] = useState('home');
+  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
+  const [username, setUsername] = useState('User');
+  const [uploadedQuestions, setUploadedQuestions] = useState([]);
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 600);
+
 
   useEffect(() => {
     const handleResize = () => {
@@ -82,10 +90,7 @@ const App = () => {
     setPage('dashboard');
   };
 
-  const snowflakeCount = isMobile ? 50 : 200;
-  const snowflakes = showSnowflakes ? Array.from({ length: snowflakeCount }).map((_, index) => (
-    <Snowflake key={index} />
-  )) : null;
+  
 
   return (
     <div>
