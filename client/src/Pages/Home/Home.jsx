@@ -5,7 +5,7 @@ import {
 import { useSpring, animated } from '@react-spring/web';
 import { GoogleOAuthProvider } from '@react-oauth/google';
 import { useNavigate } from 'react-router-dom';
-import LoginDialog from '../../components/LoginDialog/LoginDialog';
+import LoginBtn from '../../components/Login/LoginBtn'
 import "../../styles/cardsContainer.css";
 
 const HomePage = () => {
@@ -83,7 +83,7 @@ const HomePage = () => {
           }}
         >
           {!isLoggedIn ? (
-            <LoginDialog
+            <LoginBtn
               open={!isLoggedIn}
               handleGoogleLoginSuccess={handleGoogleLoginSuccess}
               handleGoogleLoginFailure={handleGoogleLoginFailure}
