@@ -70,7 +70,7 @@ const bounceKeyframes = `
   }
 `;
 
-const LoginDialog = ({ open, onClose, onLogin }) => {
+const LoginBtn = ({ open, onClose, onLogin }) => {
   return (
     <Dialog open={open} onClose={onClose} PaperProps={{ style: { borderRadius: 20 } }}>
       <DialogContent sx={{ textAlign: 'center', padding: '30px' }}>
@@ -98,4 +98,4 @@ const LoginDialog = ({ open, onClose, onLogin }) => {
   );
 };
 
-export default LoginDialog;
+export default LoginBtn;
